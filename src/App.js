@@ -1,14 +1,19 @@
 import React from "react";
-import { Drawer } from "./components";
-//import "./App.css";
+import { Drawer, Login } from "./components";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <Drawer />
-
-      <h1>hello world</h1>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Drawer />
+        </Route>
+        <Route exact path="/login">
+          <Login />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
