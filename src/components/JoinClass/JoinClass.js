@@ -3,6 +3,7 @@ import { Avatar, Button, Dialog, Slide, TextField } from "@material-ui/core";
 import { useLocalContext } from "../../context/context";
 import { Close } from "@material-ui/icons";
 import "./style.css";
+import db from "../../lib/firebase";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -21,6 +22,39 @@ const JoinClass = () => {
   const [joinedData, setJoinedData] = useState();
   const [classExists, setClassExists] = useState(false);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    db.collection("CreatedClasses")
+      .doc(email)
+      .collection("classes")
+      .doc(classCode)
+      .get()
+      .then((doc) => {
+        if (doc.exists && doc.owner !== loggedInUser.email) {
+          setClassExists(true);
+          setJoinedData(doc.data());
+          setError(false);
+        } else {
+          setError(true);
+          setClassExists(false);
+          return;
+        }
+      });
+
+    if (classExists === true) {
+      db.collection("JoinedClasses")
+        .doc(loggedInUser.email)
+        .collection("classes")
+        .doc(classCode)
+        .set({
+          joinedData,
+        })
+        .then(() => {
+          setJoinClassDialog(false);
+        });
+    }
+  };
   return (
     <div>
       <Dialog
@@ -42,6 +76,7 @@ const JoinClass = () => {
               className="joinClass__btn"
               variant="contained"
               color="primary"
+              onClick={handleSubmit}
             >
               Join
             </Button>

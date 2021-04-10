@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { auth, provider } from "./lib/firebase";
+import { auth, provider } from "../lib/firebase";
 
 const AddContext = createContext();
 
@@ -13,9 +13,9 @@ export function ContextProvider({ children }) {
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [loggedInMail, setLoggedInMail] = useState(null);
 
-  const login = () => {
-    auth.signInWithPopup(provider);
-  };
+  const login = () => auth.signInWithPopup(provider);
+
+  const logout = () => auth.signOut();
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
@@ -28,19 +28,17 @@ export function ContextProvider({ children }) {
       }
     });
 
-    return () => {
-      unsubscribe();
-    };
+    return () => unsubscribe();
   }, []);
-
   const value = {
     createClassDialog,
     setCreateClassDialog,
     joinClassDialog,
     setJoinClassDialog,
     login,
-    loggedInUser,
+    logout,
     loggedInMail,
+    loggedInUser,
   };
 
   return <AddContext.Provider value={value}>{children}</AddContext.Provider>;

@@ -1,17 +1,26 @@
 import React from "react";
 import { Drawer, Login } from "./components";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { IsUserRedirect, ProtectedRoute } from "./routes/Routes";
+import { useLocalContext } from "./context/context";
 
 function App() {
+  const { loggedInMail } = useLocalContext();
   return (
     <Router>
       <Switch>
-        <Route exact path="/">
-          <Drawer />
-        </Route>
-        <Route exact path="/login">
+        <IsUserRedirect
+          user={loggedInMail}
+          loggedInPath="/"
+          path="/signin"
+          exact
+        >
           <Login />
-        </Route>
+        </IsUserRedirect>
+
+        <ProtectedRoute user={loggedInMail} path="/" exact>
+          <Drawer />
+        </ProtectedRoute>
       </Switch>
     </Router>
   );

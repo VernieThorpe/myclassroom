@@ -20,7 +20,12 @@ const Header = ({ children }) => {
   const handleClick = (event) => setAnchorEl(event.currentTarget);
   const handleClose = () => setAnchorEl(null);
 
-  const { setCreateClassDialog, setJoinClassDialog } = useLocalContext();
+  const {
+    setCreateClassDialog,
+    setJoinClassDialog,
+    loggedInUser,
+    logout,
+  } = useLocalContext();
 
   const handleCreate = () => {
     handleClose();
@@ -31,7 +36,6 @@ const Header = ({ children }) => {
     handleClose();
     setJoinClassDialog(true);
   };
-
   return (
     <div className={classes.root}>
       <AppBar className={classes.appBar} position="static">
@@ -60,7 +64,11 @@ const Header = ({ children }) => {
               <MenuItem onClick={handleCreate}>Create Class</MenuItem>
             </Menu>
             <div>
-              <Avatar />
+              <Avatar
+                onClick={() => logout()}
+                src={loggedInUser?.photoURL}
+                className={classes.icon}
+              />
             </div>
           </div>
         </Toolbar>
