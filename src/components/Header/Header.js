@@ -43,7 +43,9 @@ const Header = ({ children }) => {
           <div className={classes.headerWrapper}>
             {children}
             <img
-              src="https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_clr_74x24px.svg"
+              src="https://i.ibb.co/pdGhgK1/logo2.png"
+              width="150"
+              height="50"
               alt="Classroom"
             />
             <Typography variant="h6" className={classes.title}>
