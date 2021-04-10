@@ -63,8 +63,12 @@ const Main = ({ classData }) => {
         </div>
         <div className="main__announce">
           <div className="main__status">
-            <p>Upcoming</p>
-            <p className="main__subText">No work due</p>
+            <p>
+              <h2>Upcoming</h2>
+            </p>
+            <p className="main__subText">
+              <h4>No work due</h4>
+            </p>
           </div>
           <div className="main__announcements">
             <div className="main__announcementsWrapper">
@@ -107,8 +111,9 @@ const Main = ({ classData }) => {
                     className="main__wrapper100"
                     onClick={() => setShowInput(true)}
                   >
-                    <Avatar />
-                    <div>Announce Something to class</div>
+                    <div>
+                      <h3>Announce Something to class</h3>
+                    </div>
                   </div>
                 )}
               </div>

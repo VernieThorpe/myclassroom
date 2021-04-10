@@ -15,7 +15,7 @@ export const useStyles = makeStyles((theme) => ({
     cursor: "pointer",
   },
   appBar: {
-    backgroundColor: "white",
+    backgroundColor: "lightslategrey",
     color: "black",
   },
   toolbar: {

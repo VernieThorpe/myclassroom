@@ -7,6 +7,8 @@ import {
   Typography,
 } from "@material-ui/core";
 import { Add, Apps } from "@material-ui/icons";
+import Button from "@material-ui/core/Button";
+
 import React from "react";
 import { CreateClass, JoinClass } from "..";
 import { useLocalContext } from "../../context/context";
@@ -43,35 +45,27 @@ const Header = ({ children }) => {
           <div className={classes.headerWrapper}>
             {children}
             <img
-              src="https://i.ibb.co/pdGhgK1/logo2.png"
-              width="150"
+              src="https://i.ibb.co/z7Tcf0h/Screenshot-2021-04-11-at-3-53-30-AM.png"
+              width="200"
               height="50"
               alt="Classroom"
             />
-            <Typography variant="h6" className={classes.title}>
-              Classroom
-            </Typography>
           </div>
+
+          <div>
+            <h1>Welcome, {loggedInUser?.displayName}</h1>
+          </div>
+
           <div className={classes.header__wrapper__right}>
-            <Add onClick={handleClick} className={classes.icon} />
-            <Apps className={classes.icon} />
-            <Menu
-              id="simple-menu"
-              anchorEl={anchorEl}
-              keepMounted
-              open={Boolean(anchorEl)}
-              onClose={handleClose}
-            >
-              <MenuItem onClick={handleJoin}>Join Class</MenuItem>
-              <MenuItem onClick={handleCreate}>Create Class</MenuItem>
-            </Menu>
-            <div>
-              <Avatar
-                onClick={() => logout()}
-                src={loggedInUser?.photoURL}
-                className={classes.icon}
-              />
-            </div>
+            <Button color="default" onClick={handleJoin}>
+              Join Class
+            </Button>
+            <Button color="default" onClick={handleCreate}>
+              Create Class
+            </Button>
+            <Button variant="outlined" color="default" onClick={logout}>
+              LOGOUT
+            </Button>
           </div>
         </Toolbar>
       </AppBar>

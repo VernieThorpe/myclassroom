@@ -13,7 +13,7 @@ ol {
 .joined__list {
   display: flex;
   flex-direction: column;
-  height: 18.375rem;
+  height: 12rem;
   margin-bottom: 1.5rem;
   margin-right: 1.5rem;
   overflow: hidden;
@@ -25,16 +25,8 @@ ol {
   -webkit-border-radius: 0.5rem;
   border-radius: 0.5rem;
 }
-.joined__imgWrapper {
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  background-color: #174ea6;
-}
+
 .joined__image {
-  background-image: url(https://gstatic.com/classroom/themes/Physics.jpg);
   height: 100%;
   left: 0;
   position: absolute;
@@ -43,6 +35,11 @@ ol {
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   background-size: cover;
+  background: linear-gradient(
+    90deg,
+    rgba(25, 45, 55, 0.7049194677871149) 0%,
+    rgba(148, 163, 233, 0.7861519607843137) 100%
+  );
 }
 .joined__container {
   position: relative;
@@ -53,42 +50,25 @@ ol {
   flex-direction: column;
   -webkit-justify-content: space-between;
   justify-content: space-between;
-  height: 4.5rem;
+  height: 3rem;
   padding: 1rem 1rem 0.75rem;
   position: relative;
 }
 .joined__title {
-  color: white;
+  text-align: center;
+  font-size: 30px;
+  color: rgb(0, 0, 0);
   font-family: "Roboto";
   text-decoration: none;
 }
-.joined__title h2 {
+.joined__title h1 {
   font-weight: 400;
 }
-.joined__title h2:hover {
+.joined__title h1:hover {
   text-decoration: underline;
 }
 .joined__owner {
-  color: white;
+  color: black;
   font-weight: 400 !important;
   font-size: 15px !important;
-}
-.joined__avatar {
-  float: right;
-  height: 4.6875rem !important;
-  position: relative !important;
-  margin-top: -3.09375rem !important;
-  width: 4.6875rem !important;
-  text-align: left;
-}
-.joined__bottom {
-  margin-top: 40%;
-  display: flex;
-  color: #5f6368;
-  justify-content: flex-end;
-  border-top: 0.2px solid #e0e0e0;
-  padding: 10px;
-}
-.joined__bottom > * {
-  margin-right: 20px;
 }
